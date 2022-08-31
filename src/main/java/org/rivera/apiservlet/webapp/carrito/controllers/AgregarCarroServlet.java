@@ -11,8 +11,10 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import org.rivera.apiservlet.webapp.carrito.service.ProductoServiceJdbcImp;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.util.Optional;
 
 @WebServlet("/carro/agregar")
@@ -21,7 +23,8 @@ public class AgregarCarroServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     Long id = Long.parseLong(req.getParameter("id"));
-    ProductoService service = new ProductoServiceImp();
+    Connection conn = (Connection) req.getAttribute("conn");  //Configure conexión en el Filtro
+    ProductoService service = new ProductoServiceJdbcImp(conn);
     Optional<Producto> product = service.byId(id);
 
     if( product.isPresent() ) {

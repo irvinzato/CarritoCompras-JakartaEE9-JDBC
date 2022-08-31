@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,7 +19,8 @@ public class ProductoServlet extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    ProductoService service = new ProductoServiceImp();
+    Connection conn = (Connection) req.getAttribute("conn");  //Configure conexión en el Filtro
+    ProductoService service = new ProductoServiceJdbcImp(conn);
     List<Producto> products = service.toList();
 
     LoginService serviceLoginSession = new LoginServiceImp();
@@ -37,7 +39,7 @@ public class ProductoServlet extends HttpServlet {
       out.println("     <title> Listado de productos con Session </title>");
       out.println("   </head>");
       out.println("   <body>");
-      out.println("     <h1> Listado de productos con Session </h1>");
+      out.println("     <h1> Listado de productos desde conexión a Base de Datos </h1>");
       if( usernameOptional.isPresent() ) {
         out.println("       <h2 style='color: blue;'> Hola " + usernameOptional.get() + " bienvenido ! </h2>");
       }
