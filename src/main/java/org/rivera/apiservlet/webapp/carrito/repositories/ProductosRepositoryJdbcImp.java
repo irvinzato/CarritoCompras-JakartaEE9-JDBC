@@ -63,11 +63,31 @@ public class ProductosRepositoryJdbcImp implements Repository<Producto>{
 
   @Override
   public void save(Producto producto) throws SQLException {
-
+    String query;
+    if( producto.getId() != null && producto.getId() > 0 ) {
+      query = "UPDATE productos SET nombre=?, precio=?, categoria_id=?, sku=? WHERE id=?";
+    } else {
+      query = "INSERT INTO productos(nombre, precio, categoria_id, sku, fecha_registro) VALUES(?, ?, ?, ?, ?)";
+    }
+    try( PreparedStatement pstmt = conn.prepareStatement(query) ) {
+      pstmt.setString(1, producto.getName());
+      pstmt.setInt(2, producto.getPrice() );
+      pstmt.setLong(3, producto.getCategory().getId()); //El la tabla Sql es Long "id"
+      pstmt.setString(4, producto.getSku());
+      if( producto.getId() != null && producto.getId() > 0 ) {
+        pstmt.setLong(5, producto.getId());
+      } else {
+        pstmt.setDate(5, Date.valueOf(producto.getRegisterDate()));   //Importante el cast
+      }
+      pstmt.executeUpdate();
+    }
   }
 
   @Override
   public void deleteByID(Long id) throws SQLException {
-
+    try( PreparedStatement pstmt = conn.prepareStatement("DELETE FROM productos WHERE id=?") ) {
+      pstmt.setLong(1, id);
+      pstmt.executeUpdate();
+    }
   }
 }
