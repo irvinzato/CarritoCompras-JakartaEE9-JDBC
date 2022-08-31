@@ -2,10 +2,7 @@ package org.rivera.apiservlet.webapp.carrito.repositories;
 
 import org.rivera.apiservlet.webapp.carrito.models.Producto;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,7 +41,18 @@ public class ProductosRepositoryJdbcImp implements Repository<Producto>{
 
   @Override
   public Producto byID(Long id) throws SQLException {
-    return null;
+    Producto producto = null;
+    try( PreparedStatement pstmt = conn.prepareStatement("SELECT p.*, c.nombre AS categoria FROM productos AS p " +
+            " INNER JOIN categorias AS c ON(p.categoria_id = c.id) WHERE p.id = ?")) {
+      pstmt.setLong(1, id);
+
+      try( ResultSet rs = pstmt.executeQuery() ) {
+        if( rs.next() ) {
+          producto = getProducto(rs);
+        }
+      }
+    }
+    return producto;
   }
 
   @Override
