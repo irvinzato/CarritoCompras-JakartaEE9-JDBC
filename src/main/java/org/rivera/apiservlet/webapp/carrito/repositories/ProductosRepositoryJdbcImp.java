@@ -1,5 +1,6 @@
 package org.rivera.apiservlet.webapp.carrito.repositories;
 
+import org.rivera.apiservlet.webapp.carrito.models.Categoria;
 import org.rivera.apiservlet.webapp.carrito.models.Producto;
 
 import java.sql.*;
@@ -19,7 +20,12 @@ public class ProductosRepositoryJdbcImp implements Repository<Producto>{
     product.setId( rs.getLong("id") );
     product.setName( rs.getString("nombre") );
     product.setPrice( rs.getInt("precio") );
-    product.setType( rs.getString("categoria") );
+    product.setRegisterDate( rs.getDate("fecha_registro").toLocalDate() );   //Importante el cast
+    product.setSku( rs.getString("sku") );
+    Categoria c = new Categoria();
+    c.setId( rs.getLong("categoria_id") );
+    c.setName( rs.getString("categoria") );
+    product.setCategory(c);
     return product;
   }
 

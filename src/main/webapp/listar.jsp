@@ -20,7 +20,7 @@
     <tr>
         <th>ID</th>
         <th>Nombre</th>
-        <th>Tipo</th>
+        <th>Categoría</th>
         <% if( usernameOptional.isPresent() ) { %>
             <th>Precio</th>
             <th>Agregar</th>
@@ -30,7 +30,7 @@
     <tr>
         <td><%=p.getId() %></td>
         <td><%=p.getName() %></td>
-        <td><%=p.getType() %></td>
+        <td><%=p.getCategory().getName() %></td>
         <% if( usernameOptional.isPresent() ) { %>
             <td><%=p.getPrice() %></td>
             <td><a href="<%=request.getContextPath()%>/carro/agregar?id=<%=p.getId()%>">Agregar al carro</a></td>
