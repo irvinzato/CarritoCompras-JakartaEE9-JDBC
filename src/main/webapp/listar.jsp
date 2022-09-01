@@ -15,6 +15,7 @@
 <h1>Listado de productos migrado a JSP</h1>
 <% if( usernameOptional.isPresent() ) { %>
     <h2> Bienvenido  <%=usernameOptional.get() %> </h2>
+    <p><a href="<%=request.getContextPath()%>/productos/form"> Añadir productos </a></p>
 <% } %>
 <table>
     <tr>

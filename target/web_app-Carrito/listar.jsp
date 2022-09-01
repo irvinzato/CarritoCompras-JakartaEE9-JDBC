@@ -15,12 +15,13 @@
 <h1>Listado de productos migrado a JSP</h1>
 <% if( usernameOptional.isPresent() ) { %>
     <h2> Bienvenido  <%=usernameOptional.get() %> </h2>
+    <p><a href="<%=request.getContextPath()%>/productos/form"> Añadir productos </a></p>
 <% } %>
 <table>
     <tr>
         <th>ID</th>
         <th>Nombre</th>
-        <th>Tipo</th>
+        <th>Categoría</th>
         <% if( usernameOptional.isPresent() ) { %>
             <th>Precio</th>
             <th>Agregar</th>
@@ -30,7 +31,7 @@
     <tr>
         <td><%=p.getId() %></td>
         <td><%=p.getName() %></td>
-        <td><%=p.getType() %></td>
+        <td><%=p.getCategory().getName() %></td>
         <% if( usernameOptional.isPresent() ) { %>
             <td><%=p.getPrice() %></td>
             <td><a href="<%=request.getContextPath()%>/carro/agregar?id=<%=p.getId()%>">Agregar al carro</a></td>

@@ -25,6 +25,8 @@
             </div>
         </div>
     </form>
+
+    <p><a href="<%=request.getContextPath()%>/index.html">Volver a pagina principal</a></p>
 </div>
 </body>
 </html>
