@@ -35,4 +35,29 @@ public class Carro {
     return items.stream()
             .mapToInt( i -> i.getTotalPrice() ).sum();
   }
+
+  public void removeProductos(List<String> productoIds) {
+    if (productoIds != null) {
+      productoIds.forEach(this::removeProducto);
+      // que es lo mismo a:
+      // productoIds.forEach(productoId -> removeProducto(productoId));
+    }
+  }
+
+  public void removeProducto(String productoId) {
+    Optional<ItemCarro> item = findProducto(productoId);
+    item.ifPresent(itemCarro -> items.remove(itemCarro));
+  }
+
+  private Optional<ItemCarro> findProducto(String productoId) {
+    return  items.stream()
+            .filter(itemCarro -> productoId.equals(Long.toString(itemCarro.getProduct().getId())))
+            .findAny();
+  }
+
+  public void updateCantidad(String productoId, int cantidad) {
+    Optional<ItemCarro> item = findProducto(productoId);
+    item.ifPresent(itemCarro -> itemCarro.setAmount(cantidad));
+  }
+
 }
