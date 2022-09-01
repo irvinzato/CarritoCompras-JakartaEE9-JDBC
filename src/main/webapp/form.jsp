@@ -15,25 +15,25 @@ List<Categoria> categories = (List<Categoria>) request.getAttribute("categorias"
     <div>
         <label for="name">Nombre del producto</label>
         <div>
-        <input type="text" name="name" id="name">
+            <input type="text" name="name" id="name">
         </div>
     </div>
     <div>
         <label for="price">Precio</label>
         <div>
-        <input type="number" name="price" id="price">
+            <input type="number" name="price" id="price">
         </div>
     </div>
     <div>
         <label for="register_date">Fecha de Registro</label>
         <div>
-        <input type="date" name="register_date", id="register_date">
+            <input type="date" name="register_date", id="register_date">
         </div>
     </div>
     <div>
         <label for="sku">Sku</label>
         <div>
-        <input type="text" name="sku" id="sku">
+            <input type="text" name="sku" id="sku">
         </div>
     </div>
     <div>
