@@ -16,6 +16,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @WebServlet("/productos/form")
 public class ProductoFormServlet extends HttpServlet {
@@ -25,7 +26,22 @@ public class ProductoFormServlet extends HttpServlet {
     Connection conn = (Connection) req.getAttribute("conn"); //Configure conexión en el Filtro
     ProductoService service = new ProductoServiceJdbcImp(conn);
     req.setAttribute("categorias", service.toListCategories());
+    Long id;
+    try {
+      id = Long.parseLong(req.getParameter("id"));
+    }catch( NumberFormatException e ) {
+      id = 0L;
+    }
+    Producto product = new Producto();
+    product.setCategory(new Categoria()); //Para evitar el null cuando sea producto nuevo
 
+    if( id > 0 ) {
+      Optional<Producto> op = service.byIdProduct(id);
+      if( op.isPresent() ) {
+        product = op.get();
+      }
+    }
+    req.setAttribute("producto", product);
     getServletContext().getRequestDispatcher("/form.jsp").forward(req,resp);
   }
 
