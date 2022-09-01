@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -21,11 +22,10 @@ import java.util.Optional;
 @WebServlet("/productos/form")
 public class ProductoFormServlet extends HttpServlet {
 
-  @Override //Obtengo categorías para pasarlas al jsp
+  @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     Connection conn = (Connection) req.getAttribute("conn"); //Configure conexión en el Filtro
     ProductoService service = new ProductoServiceJdbcImp(conn);
-    req.setAttribute("categorias", service.toListCategories());
     Long id;
     try {
       id = Long.parseLong(req.getParameter("id"));
@@ -41,6 +41,7 @@ public class ProductoFormServlet extends HttpServlet {
         product = op.get();
       }
     }
+    req.setAttribute("categorias", service.toListCategories()); //Obtengo categorías para pasarlas al jsp
     req.setAttribute("producto", product);
     getServletContext().getRequestDispatcher("/form.jsp").forward(req,resp);
   }
@@ -84,25 +85,41 @@ public class ProductoFormServlet extends HttpServlet {
     if( categoryId.equals(0L) ) {
       errors.put("category", "La categoría es requerida");
     }
+    LocalDate registerDate;
+    try {
+      registerDate = LocalDate.parse( dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));  //La fecha String la parseo a "LocalDate"
+    }catch( DateTimeParseException e) {
+      registerDate = null;
+    }
+    //Para distinguir si es nuevo o ya existe el producto(Tengo un input "hidden" en formulario)
+    Long id;
+    try {
+      id = Long.parseLong(req.getParameter("id"));
+    }catch( NumberFormatException e ) {
+      id = 0L;
+    }
+
+    Producto product = new Producto();
+    product.setId(id);      //Importante para distinguir si edita o crea
+    product.setName(name);
+    product.setPrice(price);
+    product.setRegisterDate(registerDate);
+    product.setSku(sku);
+    Categoria c = new Categoria();
+    c.setId(categoryId);
+    product.setCategory(c);
 
     if( errors.isEmpty() ) {
-      LocalDate registerDate = LocalDate.parse( dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));  //La fecha String la parseo a "LocalDate"
-      Producto product = new Producto();
-      product.setName(name);
-      product.setPrice(price);
-      product.setRegisterDate(registerDate);
-      product.setSku(sku);
-      Categoria c = new Categoria();
-      c.setId(categoryId);
-      product.setCategory(c);
-
       service.saveProduct(product);
 
       resp.sendRedirect(req.getContextPath() + "/productosSession.html"); //Importante redirección para evitar refresh con información duplicada
     } else {
       //Si hay errores paso la lista de errores a la vista y vuelvo a mostrar el formulario
       req.setAttribute("errors", errors);
-      doGet(req, resp);
+      //doGet(req, resp);
+      req.setAttribute("categorias", service.toListCategories()); //Obtengo categorías para pasarlas al jsp
+      req.setAttribute("producto", product);
+      getServletContext().getRequestDispatcher("/form.jsp").forward(req,resp);
     }
 
    }

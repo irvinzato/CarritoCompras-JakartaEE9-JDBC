@@ -68,8 +68,9 @@ String dateCons = product.getRegisterDate() != null
         <% } %>
     </div>
     <div>
-        <input type="submit" value="Guardar">
+        <input type="submit" value="<%=(product.getId() != null && product.getId() > 0)  ? "Editar" : "Crear" %>">
     </div>
+    <input type="hidden" name="id"  value="<%=product.getId()%>">
 </form>
 
 <p><a href="<%=request.getContextPath()%>/index.html">Volver a pagina principal</a></p>
