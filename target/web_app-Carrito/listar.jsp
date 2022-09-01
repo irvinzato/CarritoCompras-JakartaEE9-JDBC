@@ -26,6 +26,7 @@
             <th>Precio</th>
             <th>Agregar</th>
             <th>Editar</th>
+            <th>Eliminar</th>
         <% } %>
     </tr>
     <% for(Producto p: products) { %>
@@ -37,6 +38,8 @@
             <td><%=p.getPrice() %></td>
             <td><a href="<%=request.getContextPath()%>/carro/agregar?id=<%=p.getId()%>">Agregar al carro</a></td>
             <td><a href="<%=request.getContextPath()%>/productos/form?id=<%=p.getId()%>">Editar producto</a></td>
+            <td><a onclick="return confirm('¿Estas seguro de eliminar?');"
+            href="<%=request.getContextPath()%>/productos/eliminar?id=<%=p.getId()%>">Eliminar producto</a></td>
         <% } %>
     </tr>
     <% } %>

@@ -19,5 +19,6 @@ C:\Users\Irving\OneDrive\Documentos\JavaUdemy\jakarta-javaEE\webapp_carrito\src\
 C:\Users\Irving\OneDrive\Documentos\JavaUdemy\jakarta-javaEE\webapp_carrito\src\main\java\org\rivera\apiservlet\webapp\carrito\service\LoginServiceImp.java
 C:\Users\Irving\OneDrive\Documentos\JavaUdemy\jakarta-javaEE\webapp_carrito\src\main\java\org\rivera\apiservlet\webapp\carrito\models\ItemCarro.java
 C:\Users\Irving\OneDrive\Documentos\JavaUdemy\jakarta-javaEE\webapp_carrito\src\main\java\org\rivera\apiservlet\webapp\carrito\repositories\Repository.java
+C:\Users\Irving\OneDrive\Documentos\JavaUdemy\jakarta-javaEE\webapp_carrito\src\main\java\org\rivera\apiservlet\webapp\carrito\controllers\EliminarProductoServlet.java
 C:\Users\Irving\OneDrive\Documentos\JavaUdemy\jakarta-javaEE\webapp_carrito\src\main\java\org\rivera\apiservlet\webapp\carrito\repositories\ProductosRepositoryJdbcImp.java
 C:\Users\Irving\OneDrive\Documentos\JavaUdemy\jakarta-javaEE\webapp_carrito\src\main\java\org\rivera\apiservlet\webapp\carrito\service\LoginService.java

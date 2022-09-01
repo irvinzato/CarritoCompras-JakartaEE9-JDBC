@@ -1,3 +1,4 @@
+org\rivera\apiservlet\webapp\carrito\controllers\EliminarProductoServlet.class
 org\rivera\apiservlet\webapp\carrito\controllers\ProductoServlet.class
 org\rivera\apiservlet\webapp\carrito\service\ProductoServiceJdbcImp.class
 org\rivera\apiservlet\webapp\carrito\models\Carro.class
