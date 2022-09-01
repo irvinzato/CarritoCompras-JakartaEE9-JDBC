@@ -1,5 +1,6 @@
 package org.rivera.apiservlet.webapp.carrito.service;
 
+import org.rivera.apiservlet.webapp.carrito.models.Categoria;
 import org.rivera.apiservlet.webapp.carrito.models.Producto;
 
 import java.util.Arrays;
@@ -18,5 +19,25 @@ public class ProductoServiceImp implements ProductoService {
   @Override
   public Optional<Producto> byIdProduct(Long id) {
     return toListProduct().stream().filter( p -> p.getId().equals(id) ).findAny();
+  }
+
+  @Override
+  public void saveProduct(Producto product) {
+
+  }
+
+  @Override
+  public void deleteProduct(Long id) {
+
+  }
+
+  @Override
+  public List<Categoria> toListCategories() {
+    return null;
+  }
+
+  @Override
+  public Optional<Categoria> byIdCategory(Long id) {
+    return Optional.empty();
   }
 }
