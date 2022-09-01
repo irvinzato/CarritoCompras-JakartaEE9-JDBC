@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Optional;
 
-@WebFilter("/carro/*")
+@WebFilter({"/carro/*", "/productos/*"})
 public class LoginFiltro implements Filter {
 
   @Override
