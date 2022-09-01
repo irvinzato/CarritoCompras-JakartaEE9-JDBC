@@ -49,20 +49,45 @@ public class ProductoFormServlet extends HttpServlet {
     } catch( NumberFormatException e ) {
       categoryId = 0L;
     }
-    LocalDate registerDate = LocalDate.parse( dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));  //La fecha String la parseo a "LocalDate"
+    Map<String, String> errors = new HashMap<>();
 
-    Producto product = new Producto();
-    product.setName(name);
-    product.setPrice(price);
-    product.setRegisterDate(registerDate);
-    product.setSku(sku);
-    Categoria c = new Categoria();
-    c.setId(categoryId);
-    product.setCategory(c);
+    if( name == null || name.isBlank() ) {
+      errors.put("name", "El nombre no puede estar vacío");
+    }
+    if( sku == null || sku.isBlank() ) {
+      errors.put("sku", "El sku no puede estar en blanco");
+    } else if( sku.length() > 10 ) {
+      errors.put("sku", "El sku no puede tener mas de 10 caracteres");
+    }
+    if( dateStr == null || dateStr.isBlank() ) {
+      errors.put("dateRegister", "Debe seleccionar una fecha de registro");
+    }
+    if( price.equals(0) ) {
+      errors.put("price", "El precio es requerido");
+    }
+    if( categoryId.equals(0L) ) {
+      errors.put("category", "La categoría es requerida");
+    }
 
-    service.saveProduct(product);
+    if( errors.isEmpty() ) {
+      LocalDate registerDate = LocalDate.parse( dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));  //La fecha String la parseo a "LocalDate"
+      Producto product = new Producto();
+      product.setName(name);
+      product.setPrice(price);
+      product.setRegisterDate(registerDate);
+      product.setSku(sku);
+      Categoria c = new Categoria();
+      c.setId(categoryId);
+      product.setCategory(c);
 
-    resp.sendRedirect(req.getContextPath() + "/productosSession.html"); //Importante la redirección para evitar refresh con información duplicada
+      service.saveProduct(product);
+
+      resp.sendRedirect(req.getContextPath() + "/productosSession.html"); //Importante redirección para evitar refresh con información duplicada
+    } else {
+      //Si hay errores paso la lista de errores a la vista y vuelvo a mostrar el formulario
+      req.setAttribute("errors", errors);
+      doGet(req, resp);
+    }
 
    }
 }
