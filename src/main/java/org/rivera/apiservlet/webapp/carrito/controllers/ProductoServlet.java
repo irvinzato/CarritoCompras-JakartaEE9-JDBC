@@ -21,7 +21,7 @@ public class ProductoServlet extends HttpServlet {
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     Connection conn = (Connection) req.getAttribute("conn");  //Configure conexión en el Filtro
     ProductoService service = new ProductoServiceJdbcImp(conn);
-    List<Producto> products = service.toList();
+    List<Producto> products = service.toListProduct();
 
     LoginService serviceLoginSession = new LoginServiceImp();
     Optional<String> usernameOptional = serviceLoginSession.getUsername(req);

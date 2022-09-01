@@ -9,14 +9,14 @@ import java.util.Optional;
 public class ProductoServiceImp implements ProductoService {
 
   @Override
-  public List<Producto> toList() {
+  public List<Producto> toListProduct() {
     return Arrays.asList(new Producto(1L, "NoteBook", "Computación", 17500),
             new Producto(2L, "Yeyian CPU", "Computación", 15000),
             new Producto(3L, "Mesa Escritorio", "Oficina", 10000));
   }
 
   @Override
-  public Optional<Producto> byId(Long id) {
-    return toList().stream().filter( p -> p.getId().equals(id) ).findAny();
+  public Optional<Producto> byIdProduct(Long id) {
+    return toListProduct().stream().filter( p -> p.getId().equals(id) ).findAny();
   }
 }

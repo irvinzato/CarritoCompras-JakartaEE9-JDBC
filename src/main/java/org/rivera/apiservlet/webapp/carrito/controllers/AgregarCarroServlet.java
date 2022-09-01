@@ -25,7 +25,7 @@ public class AgregarCarroServlet extends HttpServlet {
     Long id = Long.parseLong(req.getParameter("id"));
     Connection conn = (Connection) req.getAttribute("conn");  //Configure conexión en el Filtro
     ProductoService service = new ProductoServiceJdbcImp(conn);
-    Optional<Producto> product = service.byId(id);
+    Optional<Producto> product = service.byIdProduct(id);
 
     if( product.isPresent() ) {
       ItemCarro item = new ItemCarro(1, product.get());

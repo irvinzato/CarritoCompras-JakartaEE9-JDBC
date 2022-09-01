@@ -17,7 +17,7 @@ public class ProductoServiceJdbcImp implements ProductoService{
   }
 
   @Override
-  public List<Producto> toList() {
+  public List<Producto> toListProduct() {
     try {
       return this.repositoryJdbcImp.toList();
     } catch (SQLException e) {
@@ -26,7 +26,7 @@ public class ProductoServiceJdbcImp implements ProductoService{
   }
 
   @Override
-  public Optional<Producto> byId(Long id) {
+  public Optional<Producto> byIdProduct(Long id) {
     try {
       return Optional.ofNullable(this.repositoryJdbcImp.byID(id));
     } catch (SQLException e) {

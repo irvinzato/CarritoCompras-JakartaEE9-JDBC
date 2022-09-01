@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProductoService {
-  List<Producto> toList();
+  List<Producto> toListProduct();
 
-  Optional<Producto> byId(Long id);
+  Optional<Producto> byIdProduct(Long id);
+
+
 }
