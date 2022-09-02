@@ -40,7 +40,7 @@
         <% } %>
     </table>
 
-    <p><a href="<%=request.getContextPath()%>/index.jsp">Volver a pagina principal</a></p>
+    <p><a href="<%=request.getContextPath()%>/loginSession.html">Volver a pagina principal</a></p>
     <p><%=msgRequestListener%></p>
     <p><%=msgApp%></p>
 </div>
