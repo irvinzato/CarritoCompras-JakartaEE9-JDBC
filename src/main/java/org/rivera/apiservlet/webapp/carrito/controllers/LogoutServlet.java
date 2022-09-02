@@ -16,7 +16,7 @@ public class LogoutServlet extends HttpServlet {
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     LoginService auth = new LoginServiceImp();
     Optional<String> usernameSession = auth.getUsername(req);
-    //Para cerrar la cookie
+    //Para cerrar la session
     if( usernameSession.isPresent() ) {
       HttpSession session = req.getSession();    //Obtengo la sesión
       session.invalidate();   //BORRA TODO LO QUE TENGA EN SESIÓN DE USUARIO

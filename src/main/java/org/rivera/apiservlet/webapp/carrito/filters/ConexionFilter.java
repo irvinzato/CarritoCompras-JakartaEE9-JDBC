@@ -5,7 +5,9 @@ import org.rivera.apiservlet.webapp.carrito.util.ConexionBaseDatos;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletResponse;
+import org.rivera.apiservlet.webapp.carrito.util.ConexionBaseDatosPool;
 
+import javax.naming.NamingException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -15,7 +17,7 @@ public class ConexionFilter implements Filter {
 
   @Override
   public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-    try( Connection conn = ConexionBaseDatos.getConnection() ) {
+    try( Connection conn = ConexionBaseDatosPool.getConnection() ) {    //PUEDO USAR CUALQUIERA DE MIS CONEXIONES
       if( conn.getAutoCommit() ) {
         conn.setAutoCommit(false);
       }
@@ -29,7 +31,7 @@ public class ConexionFilter implements Filter {
                 e.getMessage());
         e.printStackTrace();
       }
-    } catch (SQLException e) {
+    } catch (SQLException | NamingException e) {      //NamingException lo ocupo para la conexión POOL en singleTon no
       throw new RuntimeException(e);
     }
   }

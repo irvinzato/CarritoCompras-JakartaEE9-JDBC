@@ -1,5 +1,7 @@
+C:\Users\Irving\OneDrive\Documentos\JavaUdemy\jakarta-javaEE\webapp_carrito\src\main\java\org\rivera\apiservlet\webapp\carrito\models\Usuario.java
 C:\Users\Irving\OneDrive\Documentos\JavaUdemy\jakarta-javaEE\webapp_carrito\src\main\java\org\rivera\apiservlet\webapp\carrito\controllers\ActualizarCarroServlet.java
 C:\Users\Irving\OneDrive\Documentos\JavaUdemy\jakarta-javaEE\webapp_carrito\src\main\java\org\rivera\apiservlet\webapp\carrito\controllers\ProductoServlet.java
+C:\Users\Irving\OneDrive\Documentos\JavaUdemy\jakarta-javaEE\webapp_carrito\src\main\java\org\rivera\apiservlet\webapp\carrito\repositories\UsuarioRepositoryImp.java
 C:\Users\Irving\OneDrive\Documentos\JavaUdemy\jakarta-javaEE\webapp_carrito\src\main\java\org\rivera\apiservlet\webapp\carrito\util\ConexionBaseDatos.java
 C:\Users\Irving\OneDrive\Documentos\JavaUdemy\jakarta-javaEE\webapp_carrito\src\main\java\org\rivera\apiservlet\webapp\carrito\service\ProductoServiceJdbcImp.java
 C:\Users\Irving\OneDrive\Documentos\JavaUdemy\jakarta-javaEE\webapp_carrito\src\main\java\org\rivera\apiservlet\webapp\carrito\controllers\VerCarroServlet.java
@@ -9,6 +11,7 @@ C:\Users\Irving\OneDrive\Documentos\JavaUdemy\jakarta-javaEE\webapp_carrito\src\
 C:\Users\Irving\OneDrive\Documentos\JavaUdemy\jakarta-javaEE\webapp_carrito\src\main\java\org\rivera\apiservlet\webapp\carrito\service\ProductoService.java
 C:\Users\Irving\OneDrive\Documentos\JavaUdemy\jakarta-javaEE\webapp_carrito\src\main\java\org\rivera\apiservlet\webapp\carrito\controllers\LoginServlet.java
 C:\Users\Irving\OneDrive\Documentos\JavaUdemy\jakarta-javaEE\webapp_carrito\src\main\java\org\rivera\apiservlet\webapp\carrito\controllers\ProductoFormServlet.java
+C:\Users\Irving\OneDrive\Documentos\JavaUdemy\jakarta-javaEE\webapp_carrito\src\main\java\org\rivera\apiservlet\webapp\carrito\repositories\UsuarioRepository.java
 C:\Users\Irving\OneDrive\Documentos\JavaUdemy\jakarta-javaEE\webapp_carrito\src\main\java\org\rivera\apiservlet\webapp\carrito\controllers\AgregarCarroServlet.java
 C:\Users\Irving\OneDrive\Documentos\JavaUdemy\jakarta-javaEE\webapp_carrito\src\main\java\org\rivera\apiservlet\webapp\carrito\service\LoginServiceImp.java
 C:\Users\Irving\OneDrive\Documentos\JavaUdemy\jakarta-javaEE\webapp_carrito\src\main\java\org\rivera\apiservlet\webapp\carrito\repositories\Repository.java
@@ -17,9 +20,12 @@ C:\Users\Irving\OneDrive\Documentos\JavaUdemy\jakarta-javaEE\webapp_carrito\src\
 C:\Users\Irving\OneDrive\Documentos\JavaUdemy\jakarta-javaEE\webapp_carrito\src\main\java\org\rivera\apiservlet\webapp\carrito\filters\LoginFiltro.java
 C:\Users\Irving\OneDrive\Documentos\JavaUdemy\jakarta-javaEE\webapp_carrito\src\main\java\org\rivera\apiservlet\webapp\carrito\filters\ConexionFilter.java
 C:\Users\Irving\OneDrive\Documentos\JavaUdemy\jakarta-javaEE\webapp_carrito\src\main\java\org\rivera\apiservlet\webapp\carrito\models\Categoria.java
+C:\Users\Irving\OneDrive\Documentos\JavaUdemy\jakarta-javaEE\webapp_carrito\src\main\java\org\rivera\apiservlet\webapp\carrito\service\UsuarioService.java
+C:\Users\Irving\OneDrive\Documentos\JavaUdemy\jakarta-javaEE\webapp_carrito\src\main\java\org\rivera\apiservlet\webapp\carrito\util\ConexionBaseDatosPool.java
 C:\Users\Irving\OneDrive\Documentos\JavaUdemy\jakarta-javaEE\webapp_carrito\src\main\java\org\rivera\apiservlet\webapp\carrito\controllers\LogoutServlet.java
 C:\Users\Irving\OneDrive\Documentos\JavaUdemy\jakarta-javaEE\webapp_carrito\src\main\java\org\rivera\apiservlet\webapp\carrito\service\exception\ServiceJdbcException.java
 C:\Users\Irving\OneDrive\Documentos\JavaUdemy\jakarta-javaEE\webapp_carrito\src\main\java\org\rivera\apiservlet\webapp\carrito\listeners\AplicacionListener.java
 C:\Users\Irving\OneDrive\Documentos\JavaUdemy\jakarta-javaEE\webapp_carrito\src\main\java\org\rivera\apiservlet\webapp\carrito\service\ProductoServiceImp.java
+C:\Users\Irving\OneDrive\Documentos\JavaUdemy\jakarta-javaEE\webapp_carrito\src\main\java\org\rivera\apiservlet\webapp\carrito\service\UsuarioServiceJdbcImp.java
 C:\Users\Irving\OneDrive\Documentos\JavaUdemy\jakarta-javaEE\webapp_carrito\src\main\java\org\rivera\apiservlet\webapp\carrito\models\ItemCarro.java
 C:\Users\Irving\OneDrive\Documentos\JavaUdemy\jakarta-javaEE\webapp_carrito\src\main\java\org\rivera\apiservlet\webapp\carrito\repositories\ProductosRepositoryJdbcImp.java
