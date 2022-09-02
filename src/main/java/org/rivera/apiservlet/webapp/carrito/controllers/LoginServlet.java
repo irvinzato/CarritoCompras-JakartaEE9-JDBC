@@ -1,19 +1,20 @@
 package org.rivera.apiservlet.webapp.carrito.controllers;
 
+import org.rivera.apiservlet.webapp.carrito.models.Usuario;
 import org.rivera.apiservlet.webapp.carrito.service.LoginService;
 import org.rivera.apiservlet.webapp.carrito.service.LoginServiceImp;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
+import org.rivera.apiservlet.webapp.carrito.service.UsuarioService;
+import org.rivera.apiservlet.webapp.carrito.service.UsuarioServiceJdbcImp;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.sql.Connection;
 import java.util.Optional;
 
 @WebServlet({"/login-servlet-session", "/loginSession.html"})
 public class LoginServlet extends HttpServlet {
-  final static String USERNAME = "admin";
-  final static String PASSWORD = "12345";
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -31,10 +32,15 @@ public class LoginServlet extends HttpServlet {
 
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    Connection conn = (Connection) req.getAttribute("conn");  //Configure conexión en el Filtro
+    UsuarioService service = new UsuarioServiceJdbcImp(conn);
+
     String username = req.getParameter("username");
     String password = req.getParameter("password");
 
-    if( USERNAME.equals(username) && PASSWORD.equals(password) ) {
+    Optional<Usuario> user = service.loginByUsername( username, password );
+
+    if( user.isPresent() ) {
       HttpSession session = req.getSession();
       session.setAttribute("username", username);
 
