@@ -39,6 +39,7 @@ public class AgregarCarroServlet extends HttpServlet {
       }
       car.addItemCar(item);
     }
+    req.setAttribute("tittle", "Carro de compras");
     resp.sendRedirect(req.getContextPath() + "/carro/ver");
   }
 }

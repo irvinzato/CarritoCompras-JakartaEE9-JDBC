@@ -8,15 +8,7 @@ String dateCons = product.getRegisterDate() != null
                         ? product.getRegisterDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
                         : "";
 %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Formulario producto</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-</head>
-<body>
+<jsp:include page="layout/header.jsp" />
 <div class="container">
     <h1>Formulario de productos</h1>
     <form action="<%=request.getContextPath()%>/productos/form" method="post">
@@ -78,7 +70,6 @@ String dateCons = product.getRegisterDate() != null
         <input type="hidden" name="id"  value="<%=product.getId()%>">
     </form>
 
-    <p><a href="<%=request.getContextPath()%>/index.html">Volver a pagina principal</a></p>
+    <p><a href="<%=request.getContextPath()%>/index.jsp">Volver a pagina principal</a></p>
 </div>
-</body>
-</html>
+<jsp:include page="layout/footer.jsp" />

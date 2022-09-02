@@ -24,7 +24,7 @@ public class ActualizarCarroServlet extends HttpServlet {
       updateProductos(req, carro); //Al pasar la request le mando "deleteProducts"
       updateCantidades(req, carro);
     }
-
+    req.setAttribute("tittle", "Carro de compras");
     resp.sendRedirect(req.getContextPath() + "/carro/ver");
   }
 

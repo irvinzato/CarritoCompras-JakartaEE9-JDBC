@@ -21,6 +21,7 @@ public class LogoutServlet extends HttpServlet {
       HttpSession session = req.getSession();    //Obtengo la sesión
       session.invalidate();   //BORRA TODO LO QUE TENGA EN SESIÓN DE USUARIO
     }
+    req.setAttribute("tittle", "Login");
     resp.sendRedirect(req.getContextPath() + "/loginSession.html");
   }
 }

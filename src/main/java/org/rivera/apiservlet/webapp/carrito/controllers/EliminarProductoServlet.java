@@ -31,6 +31,7 @@ public class EliminarProductoServlet extends HttpServlet {
       Optional<Producto> op = service.byIdProduct(id);
       if( op.isPresent() ) {
         service.deleteProduct(id);
+        req.setAttribute("tittle", "Listado de productos");
         resp.sendRedirect(req.getContextPath() + "/productosSession.html");
       } else {
         resp.sendError(HttpServletResponse.SC_NOT_FOUND, "No existe ID del producto");
