@@ -2,6 +2,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/beans_3_0.xsd"
        version="3.0" bean-discovery-mode="all">
-
+                            <!-- "all" toma en cuenta todas las clases del proyecto -->
+                            <!-- "annotated" toma en cuenta solamente las clases que tienen anotaciones, las que no tengan son ignoradas -->
 </beans>
 

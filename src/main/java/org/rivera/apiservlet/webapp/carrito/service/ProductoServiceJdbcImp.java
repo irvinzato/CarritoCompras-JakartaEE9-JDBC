@@ -2,16 +2,12 @@ package org.rivera.apiservlet.webapp.carrito.service;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import jakarta.inject.Named;
 import org.rivera.apiservlet.webapp.carrito.config.ProductoServicePrincipal;
 import org.rivera.apiservlet.webapp.carrito.models.Categoria;
 import org.rivera.apiservlet.webapp.carrito.models.Producto;
-import org.rivera.apiservlet.webapp.carrito.repositories.CategoriaRepositoryJdbcImp;
-import org.rivera.apiservlet.webapp.carrito.repositories.ProductosRepositoryJdbcImp;
-import org.rivera.apiservlet.webapp.carrito.repositories.Repository;
+import org.rivera.apiservlet.webapp.carrito.repositories.CrudRepository;
 import org.rivera.apiservlet.webapp.carrito.service.exception.ServiceJdbcException;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
@@ -22,9 +18,9 @@ import java.util.Optional;
 public class ProductoServiceJdbcImp implements ProductoService{
 
   @Inject
-  private Repository<Producto> productRepositoryJdbcImp;
+  private CrudRepository<Producto> productRepositoryJdbcImp;
   @Inject
-  private Repository<Categoria> categoriaRepositoryJdbcImp;
+  private CrudRepository<Categoria> categoriaRepositoryJdbcImp;
 
   @Override
   public List<Producto> toListProduct() {

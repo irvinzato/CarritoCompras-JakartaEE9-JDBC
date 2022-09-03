@@ -15,8 +15,8 @@ public class producerResources {
   @Resource(name="jdbc/myConMysql")   //Esa anotación quita las líneas comentadas
   private DataSource ds;
 
-  @Produces //Produce un objeto en el contexto
-  @RequestScoped
+  @Produces           //Produce un objeto en el contexto
+  @RequestScoped      //Cada que hago una request se genera
   @Named("conncdi")
   private Connection beansConnection() throws NamingException, SQLException {
     /*Context initContext =new InitialContext();
@@ -24,4 +24,6 @@ public class producerResources {
     DataSource ds = (DataSource)envContext.lookup("jdbc/myConMysql");*/
     return ds.getConnection();
   }
+
+  //Se puede cerrar la conexión de forma diferente V-476
 }

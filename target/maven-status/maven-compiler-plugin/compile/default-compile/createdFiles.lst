@@ -2,7 +2,6 @@ org\rivera\apiservlet\webapp\carrito\controllers\EliminarProductoServlet.class
 org\rivera\apiservlet\webapp\carrito\controllers\ProductoServlet.class
 org\rivera\apiservlet\webapp\carrito\models\Carro.class
 org\rivera\apiservlet\webapp\carrito\repositories\CategoriaRepositoryJdbcImp.class
-org\rivera\apiservlet\webapp\carrito\repositories\Repository.class
 org\rivera\apiservlet\webapp\carrito\service\exception\ServiceJdbcException.class
 org\rivera\apiservlet\webapp\carrito\controllers\LoginServlet.class
 org\rivera\apiservlet\webapp\carrito\util\ConexionBaseDatos.class
@@ -22,6 +21,7 @@ org\rivera\apiservlet\webapp\carrito\controllers\ProductoFormServlet.class
 org\rivera\apiservlet\webapp\carrito\controllers\LogoutServlet.class
 org\rivera\apiservlet\webapp\carrito\controllers\VerCarroServlet.class
 org\rivera\apiservlet\webapp\carrito\service\ProductoServiceJdbcImp.class
+org\rivera\apiservlet\webapp\carrito\repositories\CrudRepository.class
 org\rivera\apiservlet\webapp\carrito\models\Producto.class
 org\rivera\apiservlet\webapp\carrito\service\LoginServiceImp.class
 org\rivera\apiservlet\webapp\carrito\repositories\UsuarioRepository.class

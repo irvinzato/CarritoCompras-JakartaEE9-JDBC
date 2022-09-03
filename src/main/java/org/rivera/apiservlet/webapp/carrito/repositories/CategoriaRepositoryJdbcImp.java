@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @ApplicationScoped
-public class CategoriaRepositoryJdbcImp implements Repository<Categoria>{
+public class CategoriaRepositoryJdbcImp implements CrudRepository<Categoria> {
   private Connection conn;
 
   @Inject
