@@ -3,6 +3,7 @@ package org.rivera.apiservlet.webapp.carrito.service;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import org.rivera.apiservlet.webapp.carrito.config.ProductoServicePrincipal;
 import org.rivera.apiservlet.webapp.carrito.models.Categoria;
 import org.rivera.apiservlet.webapp.carrito.models.Producto;
 import org.rivera.apiservlet.webapp.carrito.repositories.CategoriaRepositoryJdbcImp;
@@ -16,7 +17,8 @@ import java.util.List;
 import java.util.Optional;
 
 @ApplicationScoped
-@Named("productoServiceJdbc")
+//@Named("productoServiceJdbc")
+@ProductoServicePrincipal     //Para personalizar de manera más elegante, en lugar del @Named
 public class ProductoServiceJdbcImp implements ProductoService{
 
   @Inject

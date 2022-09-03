@@ -7,6 +7,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.rivera.apiservlet.webapp.carrito.config.ProductoServicePrincipal;
 import org.rivera.apiservlet.webapp.carrito.models.Categoria;
 import org.rivera.apiservlet.webapp.carrito.models.Producto;
 import org.rivera.apiservlet.webapp.carrito.service.ProductoService;
@@ -25,7 +26,7 @@ import java.util.Optional;
 public class ProductoFormServlet extends HttpServlet {
 
   @Inject
-  @Named("productoServiceJdbc")
+  @ProductoServicePrincipal
   private ProductoService service;
 
   @Override

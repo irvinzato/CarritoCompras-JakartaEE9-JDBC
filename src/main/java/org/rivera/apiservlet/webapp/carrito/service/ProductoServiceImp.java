@@ -1,5 +1,6 @@
 package org.rivera.apiservlet.webapp.carrito.service;
 
+import jakarta.enterprise.inject.Alternative;
 import org.rivera.apiservlet.webapp.carrito.models.Categoria;
 import org.rivera.apiservlet.webapp.carrito.models.Producto;
 
@@ -7,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+@Alternative    //Para que esta no la ejecute, es solo una alternativa
 public class ProductoServiceImp implements ProductoService {
 
   @Override

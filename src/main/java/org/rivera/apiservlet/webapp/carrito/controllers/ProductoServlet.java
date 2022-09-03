@@ -2,6 +2,7 @@ package org.rivera.apiservlet.webapp.carrito.controllers;
 
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import org.rivera.apiservlet.webapp.carrito.config.ProductoServicePrincipal;
 import org.rivera.apiservlet.webapp.carrito.models.Producto;
 import org.rivera.apiservlet.webapp.carrito.service.*;
 import jakarta.servlet.ServletException;
@@ -19,7 +20,7 @@ import java.util.Optional;
 public class ProductoServlet extends HttpServlet {
 
   @Inject
-  @Named("productoServiceJdbc")
+  @ProductoServicePrincipal     //En lugar del Named
   private ProductoService service;
 
   @Inject
