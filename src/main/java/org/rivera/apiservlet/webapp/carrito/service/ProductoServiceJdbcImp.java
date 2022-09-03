@@ -3,6 +3,7 @@ package org.rivera.apiservlet.webapp.carrito.service;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import org.rivera.apiservlet.webapp.carrito.config.ProductoServicePrincipal;
+import org.rivera.apiservlet.webapp.carrito.interceptors.InterceptorLogin;
 import org.rivera.apiservlet.webapp.carrito.models.Categoria;
 import org.rivera.apiservlet.webapp.carrito.models.Producto;
 import org.rivera.apiservlet.webapp.carrito.repositories.CrudRepository;
@@ -23,6 +24,7 @@ public class ProductoServiceJdbcImp implements ProductoService{
   private CrudRepository<Categoria> categoriaRepositoryJdbcImp;
 
   @Override
+  @InterceptorLogin
   public List<Producto> toListProduct() {
     try {
       return this.productRepositoryJdbcImp.toList();
@@ -32,6 +34,7 @@ public class ProductoServiceJdbcImp implements ProductoService{
   }
 
   @Override
+  @InterceptorLogin
   public Optional<Producto> byIdProduct(Long id) {
     try {
       return Optional.ofNullable(this.productRepositoryJdbcImp.byID(id));

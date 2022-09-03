@@ -4,5 +4,10 @@
        version="3.0" bean-discovery-mode="all">
                             <!-- "all" toma en cuenta todas las clases del proyecto -->
                             <!-- "annotated" toma en cuenta solamente las clases que tienen anotaciones, las que no tengan son ignoradas -->
+    <interceptors>
+        <class>
+            org.rivera.apiservlet.webapp.carrito.interceptors.LoginInterceptor
+        </class>
+    </interceptors>
 </beans>
 
