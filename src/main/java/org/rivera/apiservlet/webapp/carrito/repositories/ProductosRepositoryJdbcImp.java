@@ -1,5 +1,8 @@
 package org.rivera.apiservlet.webapp.carrito.repositories;
 
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import org.rivera.apiservlet.webapp.carrito.models.Categoria;
 import org.rivera.apiservlet.webapp.carrito.models.Producto;
 
@@ -7,13 +10,12 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@ApplicationScoped
 public class ProductosRepositoryJdbcImp implements Repository<Producto>{
 
+  @Inject
+  @Named("conncdi")
   private Connection conn;
-
-  public ProductosRepositoryJdbcImp(Connection conn) {
-    this.conn = conn;
-  }
 
   private static Producto getProducto( ResultSet rs ) throws SQLException {
     Producto product = new Producto();

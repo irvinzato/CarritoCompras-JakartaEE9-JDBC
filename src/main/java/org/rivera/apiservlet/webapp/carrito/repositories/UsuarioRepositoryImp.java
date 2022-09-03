@@ -1,5 +1,8 @@
 package org.rivera.apiservlet.webapp.carrito.repositories;
 
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import org.rivera.apiservlet.webapp.carrito.models.Usuario;
 
 import java.sql.Connection;
@@ -8,12 +11,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+@ApplicationScoped
 public class UsuarioRepositoryImp implements UsuarioRepository{
-  private Connection conn;
 
-  public UsuarioRepositoryImp(Connection conn) {
-    this.conn = conn;
-  }
+  @Inject
+  @Named("conncdi")
+  private Connection conn;
 
   @Override
   public List<Usuario> toList() throws SQLException {

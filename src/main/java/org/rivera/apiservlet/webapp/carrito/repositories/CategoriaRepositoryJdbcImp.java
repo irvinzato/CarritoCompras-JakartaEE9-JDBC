@@ -1,15 +1,20 @@
 package org.rivera.apiservlet.webapp.carrito.repositories;
 
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import org.rivera.apiservlet.webapp.carrito.models.Categoria;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@ApplicationScoped
 public class CategoriaRepositoryJdbcImp implements Repository<Categoria>{
   private Connection conn;
 
-  public CategoriaRepositoryJdbcImp(Connection conn) {
+  @Inject
+  public CategoriaRepositoryJdbcImp( @Named("conncdi") Connection conn) {
     this.conn = conn;
   }
 

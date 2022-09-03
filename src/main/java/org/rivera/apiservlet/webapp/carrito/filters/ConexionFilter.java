@@ -1,5 +1,7 @@
 package org.rivera.apiservlet.webapp.carrito.filters;
 
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import org.rivera.apiservlet.webapp.carrito.service.exception.ServiceJdbcException;
 import org.rivera.apiservlet.webapp.carrito.util.ConexionBaseDatos;
 import jakarta.servlet.*;
@@ -15,14 +17,18 @@ import java.sql.SQLException;
 @WebFilter("/*")
 public class ConexionFilter implements Filter {
 
+  @Inject
+  @Named("conncdi")   //Mismo nombre del "ProducerResourses"
+  private Connection conncdi;
+
   @Override
   public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-    try( Connection conn = ConexionBaseDatosPool.getConnection() ) {    //PUEDO USAR CUALQUIERA DE MIS CONEXIONES
+    try( Connection conn = this.conncdi ) {    //PUEDO USAR CUALQUIERA DE MIS CONEXIONES
       if( conn.getAutoCommit() ) {
         conn.setAutoCommit(false);
       }
       try {
-        servletRequest.setAttribute("conn", conn);  //Le paso a los atributos del request la conexión(Asi puedo utilizarla en todos los Servlets)
+        //servletRequest.setAttribute("conn", conn);  //Le paso a los atributos del request la conexión(Asi puedo utilizarla en todos los Servlets)
         filterChain.doFilter(servletRequest, servletResponse);
         conn.commit();
       }catch(SQLException | ServiceJdbcException e) {
@@ -31,7 +37,7 @@ public class ConexionFilter implements Filter {
                 e.getMessage());
         e.printStackTrace();
       }
-    } catch (SQLException | NamingException e) {      //NamingException lo ocupo para la conexión POOL en singleTon no
+    } catch (SQLException e) {      //NamingException lo ocupo para la conexión POOL, en singleTon no
       throw new RuntimeException(e);
     }
   }

@@ -1,5 +1,7 @@
 package org.rivera.apiservlet.webapp.carrito.controllers;
 
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import org.rivera.apiservlet.webapp.carrito.models.Producto;
 import org.rivera.apiservlet.webapp.carrito.service.*;
 import jakarta.servlet.ServletException;
@@ -16,10 +18,12 @@ import java.util.Optional;
 @WebServlet({"/productosSession.html"})
 public class ProductoServlet extends HttpServlet {
 
+  @Inject
+  @Named("productoServiceJdbc")
+  private ProductoService service;
+
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    Connection conn = (Connection) req.getAttribute("conn");  //Configure conexión en el Filtro
-    ProductoService service = new ProductoServiceJdbcImp(conn);
     List<Producto> products = service.toListProduct();
 
     LoginService serviceLoginSession = new LoginServiceImp();

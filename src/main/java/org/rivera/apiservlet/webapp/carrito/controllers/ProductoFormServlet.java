@@ -1,5 +1,7 @@
 package org.rivera.apiservlet.webapp.carrito.controllers;
 
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -22,10 +24,12 @@ import java.util.Optional;
 @WebServlet("/productos/form")
 public class ProductoFormServlet extends HttpServlet {
 
+  @Inject
+  @Named("productoServiceJdbc")
+  private ProductoService service;
+
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    Connection conn = (Connection) req.getAttribute("conn"); //Configure conexión en el Filtro
-    ProductoService service = new ProductoServiceJdbcImp(conn);
     Long id;
     try {
       id = Long.parseLong(req.getParameter("id"));
@@ -49,8 +53,6 @@ public class ProductoFormServlet extends HttpServlet {
 
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    Connection conn = (Connection) req.getAttribute("conn");
-    ProductoService service = new ProductoServiceJdbcImp(conn);
 
     String name = req.getParameter("name");
     Integer price;

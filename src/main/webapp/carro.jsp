@@ -6,6 +6,7 @@ Carro car = (Carro) session.getAttribute("carro");
 <jsp:include page="layout/header.jsp" />
 <div class="container">
     <h1>Carro de compras</h1>
+    <p>Me ha llegado <%=session.getAttribute("carro") %></p>
     <% if( car == null || car.getItems().isEmpty() ) { %>
         <div class="alert alert-warning">No hay productos en el carrito de compras</div>
         <p>¡ Debes iniciar sesión y agregar productos !</p>

@@ -11,6 +11,7 @@ org\rivera\apiservlet\webapp\carrito\models\Categoria.class
 org\rivera\apiservlet\webapp\carrito\service\UsuarioService.class
 org\rivera\apiservlet\webapp\carrito\util\ConexionBaseDatosPool.class
 org\rivera\apiservlet\webapp\carrito\listeners\AplicacionListener.class
+org\rivera\apiservlet\webapp\carrito\config\ProducerResourses.class
 org\rivera\apiservlet\webapp\carrito\service\LoginService.class
 org\rivera\apiservlet\webapp\carrito\controllers\ActualizarCarroServlet.class
 org\rivera\apiservlet\webapp\carrito\filters\LoginFiltro.class
