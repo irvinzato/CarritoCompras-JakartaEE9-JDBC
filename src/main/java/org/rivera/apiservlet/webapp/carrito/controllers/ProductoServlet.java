@@ -22,11 +22,13 @@ public class ProductoServlet extends HttpServlet {
   @Named("productoServiceJdbc")
   private ProductoService service;
 
+  @Inject
+  private LoginService serviceLoginSession;
+
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     List<Producto> products = service.toListProduct();
 
-    LoginService serviceLoginSession = new LoginServiceImp();
     Optional<String> usernameOptional = serviceLoginSession.getUsername(req);
 
     //MIGRE A LA VISTA "JSP"

@@ -20,9 +20,12 @@ public class LoginServlet extends HttpServlet {
   @Inject
   private UsuarioService service;
 
+  @Inject
+  private LoginService serviceAuth;
+
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    LoginService serviceAuth = new LoginServiceImp();
+
     Optional<String> usernameOptional = serviceAuth.getUsername(req);
 
     if( usernameOptional.isPresent() ) {

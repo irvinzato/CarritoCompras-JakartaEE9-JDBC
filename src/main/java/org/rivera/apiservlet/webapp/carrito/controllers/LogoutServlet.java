@@ -1,5 +1,6 @@
 package org.rivera.apiservlet.webapp.carrito.controllers;
 
+import jakarta.inject.Inject;
 import org.rivera.apiservlet.webapp.carrito.service.LoginService;
 import org.rivera.apiservlet.webapp.carrito.service.LoginServiceImp;
 import jakarta.servlet.ServletException;
@@ -12,9 +13,12 @@ import java.util.Optional;
 @WebServlet("/logoutSession")
 public class LogoutServlet extends HttpServlet {
 
+  @Inject
+  private LoginService auth;
+
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    LoginService auth = new LoginServiceImp();
+
     Optional<String> usernameSession = auth.getUsername(req);
     //Para cerrar la session
     if( usernameSession.isPresent() ) {
