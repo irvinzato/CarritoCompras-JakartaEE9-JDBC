@@ -9,6 +9,7 @@ import org.rivera.apiservlet.webapp.carrito.service.exception.ServiceJdbcExcepti
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Optional;
 
 @ApplicationScoped
@@ -27,6 +28,15 @@ public class UsuarioServiceJdbcImp implements UsuarioService{
               .filter( u -> u.getPassword().equals(password) ); //Si es igual regresa el Optional de Usuario si no, regresa null
     } catch (SQLException e) {
       throw new ServiceJdbcException(e.getMessage(), e.getCause());
+    }
+  }
+
+  @Override
+  public List<Usuario> toListUsers() {
+    try {
+      return userRepository.toList();
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
     }
   }
 }

@@ -9,6 +9,7 @@
         <li class="list-group-item"><a href="/webapp_carrito/loginSession.html"> Login con Session </a></li>
         <li class="list-group-item"><a href="/webapp_carrito/logoutSession"> Cerrar Sesión </a></li>
         <li class="list-group-item"><a href="/webapp_carrito/carro/ver"> Ver carro de compras </a></li>
+        <li class="list-group-item"><a href="/webapp_carrito/usuarios-tabla"> Usuarios registrado en nuestra aplicación </a></li>
     </ul>
 </div>
 

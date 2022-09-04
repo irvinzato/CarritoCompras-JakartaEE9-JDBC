@@ -5,10 +5,8 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import org.rivera.apiservlet.webapp.carrito.models.Usuario;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @ApplicationScoped
@@ -20,7 +18,14 @@ public class UsuarioRepositoryImp implements UsuarioRepository{
 
   @Override
   public List<Usuario> toList() throws SQLException {
-    return null;
+    List<Usuario> listUsers = new ArrayList<>();
+    try( Statement stmt = conn.createStatement();
+         ResultSet rs = stmt.executeQuery("SELECT * FROM usuarios")  ) {
+      while( rs.next() ) {
+        listUsers.add( getUsuario( rs ) );
+      }
+    }
+    return listUsers;
   }
 
   @Override

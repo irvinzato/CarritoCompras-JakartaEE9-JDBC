@@ -24,6 +24,7 @@ public class AplicacionListener implements ServletContextListener, ServletReques
 
   @Override
   public void requestInitialized(ServletRequestEvent sre) {
+    System.out.println("INICIANDO REQUEST CON LISTENER " );
     servletContext.log("Inicializando request - requestInitialized");
     sre.getServletRequest().setAttribute("mensajeRequest", "Guardando algún valor para el request");
     //Utilizo la variable para darle un titulo personalizado a cada vista desde el Servlet
